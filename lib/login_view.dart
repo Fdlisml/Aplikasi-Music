@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  TextEditingController controller = TextEditingController();
+  TextEditingController Email = TextEditingController();
+
+  bool isRememberMe = false;
+
+  bool _isObsecure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +15,10 @@ class HomePage extends StatelessWidget {
             backgroundColor: Color.fromARGB(255, 64, 7, 121),
             title: Text(
               "Hi, Welcome Back! 👋",
-              style: TextStyle(fontSize: 23, color: Colors.white),
+              style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 23,
+                  color: Colors.white),
             ),
             elevation: 0,
             flexibleSpace: Container(
@@ -34,59 +41,157 @@ class HomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 20),
+                      // margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
+                      child: Text(
+                        "Email",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 12, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
                 Container(
-                  
-                  height: 40,
-                  margin: EdgeInsets.only(top: 30),
+                  height: 35,
+                  margin: EdgeInsets.only(top: 5),
                   child: TextField(
-                  decoration: InputDecoration(                    
-                      fillColor: Colors.white,
-                      filled: true,
-                      hintText: "Enter Your Email",
-                      hintStyle: TextStyle(fontSize: 15),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                  controller: controller,
-                ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(32.0),
-                  margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
-                  child: Text(
-                    "Password",
                     textAlign: TextAlign.left,
-                    style: TextStyle(color: Colors.white),
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(left: 10),
+                        fillColor: Colors.white,
+                        filled: true,
+                        hintText: "Enter Your Email",
+                        hintStyle: TextStyle(fontSize: 13),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    onChanged: (value) {
+                      setState;
+                    },
+                    controller: Email,
                   ),
                 ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      counterText: "Forget Password",
-                      counterStyle: TextStyle(color: Colors.red),
-                      suffixIcon: Icon(
-                        Icons.visibility,
-                        color: Colors.black,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 15),
+                      child: Text(
+                        "Password",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 12, color: Colors.white),
                       ),
-                      contentPadding: EdgeInsets.only(top: 5, left: 10),
-                      fillColor: Colors.white,
-                      filled: true,
-                      hintText: "Please Enter Your Password",
-                      hintStyle: TextStyle(fontSize: 15),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                  controller: controller,
+                    ),
+                  ],
                 ),
-                Text(controller.text)
+                Container(
+                  height: 35,
+                  margin: EdgeInsets.only(top: 5),
+                  child: TextField(
+                    textAlign: TextAlign.left,
+                    obscureText: _isObsecure,
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(left: 10),
+                        suffixIcon: InkWell(
+                          onTap: _togglePassword,
+                          child: Icon(_isObsecure
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                              size: 18,
+                              ),
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        hintText: "Please Enter Your Password",
+                        hintStyle: TextStyle(fontSize: 13),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                  ),
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Wrap(
+                //       crossAxisAlignment: WrapCrossAlignment.center,
+                //       children: [
+                //         SizedBox(
+                //           width: 20,
+                //           height: 20,
+                //           child: Checkbox(
+                //             value: isRememberMe,
+                //             onChanged: (value) {
+                //               setState(() => isRememberMe = !isRememberMe);
+                //             },
+                //             // onChanged: (value) => setState(() => isRememberMe = !isRememberMe),
+                //           ),
+                //         ),
+                //         SizedBox(width: 8),
+                //         Text(
+                //           'Remember me',
+                //           style: TextStyle(fontSize: 13, color: Colors.white),
+                //         ),
+                //       ],
+                //     ),
+                //     Text(
+                //       'Forgot password',
+                //       style: TextStyle(
+                //         color: Colors.red,
+                //         fontSize: 13,
+                //         fontWeight: FontWeight.w500,
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                Container(
+                  width: 200,
+                  height: 35,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 10),
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 255, 206, 49),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.black,
+                      )),
+                  child: Text(
+                    "Login",
+                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                )
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     Container(
+                //       padding: EdgeInsets.only(top: 352, right: 5),
+                //       child: Text(
+                //         "Dont't have an account ?",
+                //         style: TextStyle(fontSize: 13, color: Colors.white),
+                //       ),
+                //     ),
+                //     Container(
+                //       padding: EdgeInsets.only(top: 352),
+                //       child: Text(
+                //         "Sign Up",
+                //         style: TextStyle(fontSize: 13, color: Colors.yellow),
+                //       ),
+                //     )
+                //   ],
+                // )
               ],
             ),
           )),
     );
+  }
+
+  void _togglePassword() {
+      _isObsecure = !_isObsecure;
+    setState(() {});
   }
 
   void setState(Null Function() param0) {}

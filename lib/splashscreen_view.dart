@@ -15,7 +15,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   }
 
   startSplashScreen() async {
-    var duration = const Duration(seconds: 10);
+    var duration = const Duration(seconds: 5);
     return Timer(duration, () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
@@ -46,7 +46,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                 child: Text("my",
                   style: TextStyle(
                     fontStyle: FontStyle.italic,
-                    // fontFamily: "PTSerifCaption-Italic",
+                    fontFamily: "PTSerifCaption",
                     fontSize: 25,
                     color: Colors.white
                   ),
@@ -57,7 +57,6 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                 child: Text("Tune",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
-                    // fontFamily: "PT Sans",
                     fontSize: 25,
                     color: Colors.white
                   ),
