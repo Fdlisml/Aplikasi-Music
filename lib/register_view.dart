@@ -47,7 +47,6 @@ class HomePage extends StatelessWidget {
                   children: [
                     Container(
                       padding: EdgeInsets.only(top: 20),
-                      // margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
                       child: Text(
                         "Email",
                         textAlign: TextAlign.left,
@@ -76,6 +75,7 @@ class HomePage extends StatelessWidget {
                     controller: Email,
                   ),
                 ),
+                
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
