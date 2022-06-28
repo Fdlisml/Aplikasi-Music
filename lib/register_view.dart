@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/widgets/custom_checkbox.dart';
 
-class HomePage extends StatelessWidget {
+
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+
+class _RegisterPageState extends State<RegisterPage> {
   TextEditingController Email = TextEditingController();
 
-  bool isRememberMe = true;
+  bool isRememberMe = false;
 
-  bool _isObsecure = true;
+  bool _isObsecure = false;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +23,7 @@ class HomePage extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Color.fromARGB(255, 64, 7, 121),
             title: Text(
-              "Hi, Welcome Back! 👋",
+              "Create an account",
               style: TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 23,
@@ -24,7 +32,7 @@ class HomePage extends StatelessWidget {
             elevation: 0,
             flexibleSpace: Container(
               child: Text(
-                "Hello again, you’ve been missed!",
+                "Connect with yout friends today!",
                 style: TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 13,
@@ -48,6 +56,41 @@ class HomePage extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.only(top: 20),
                       child: Text(
+                        "Username",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 12, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 35,
+                  margin: EdgeInsets.only(top: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: TextField(
+                    textAlign: TextAlign.left,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(left: 10),
+                        hintText: "Enter Your Username",
+                        hintStyle: TextStyle(fontSize: 13),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide.none)),
+                    onChanged: (value) {
+                      setState;
+                    },
+                    controller: Email,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 15),
+                      child: Text(
                         "Email",
                         textAlign: TextAlign.left,
                         style: TextStyle(fontSize: 12, color: Colors.white),
@@ -58,24 +101,25 @@ class HomePage extends StatelessWidget {
                 Container(
                   height: 35,
                   margin: EdgeInsets.only(top: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)
+                  ),
                   child: TextField(
                     textAlign: TextAlign.left,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(left: 10),
-                        fillColor: Colors.white,
-                        filled: true,
                         hintText: "Enter Your Email",
                         hintStyle: TextStyle(fontSize: 13),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                            borderSide: BorderSide.none)),
                     onChanged: (value) {
                       setState;
                     },
                     controller: Email,
                   ),
                 ),
-                
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -92,26 +136,30 @@ class HomePage extends StatelessWidget {
                 Container(
                   height: 35,
                   margin: EdgeInsets.only(top: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)
+                  ),
                   child: TextField(
                     textAlign: TextAlign.left,
-                    obscureText: _isObsecure,
+                    obscureText: !_isObsecure,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(left: 10),
-                        suffixIcon: InkWell(
-                          onTap: _togglePassword,
-                          child: Icon(
+                        suffixIcon: IconButton(
+                          color: Colors.black,
+                          splashRadius: 1,
+                          onPressed: _togglePassword,
+                          icon: Icon(
                             _isObsecure
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                             size: 18,
                           ),
                         ),
-                        fillColor: Colors.white,
-                        filled: true,
                         hintText: "Please Enter Your Password",
                         hintStyle: TextStyle(fontSize: 13),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                            borderSide: BorderSide.none)),
                   ),
                 ),
                 SizedBox(
@@ -168,13 +216,13 @@ class HomePage extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(left: 85),
                         child: Text(
-                          "Login",
+                          "Sign Up",
                           style: TextStyle(fontSize: 13, color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 30),
+                        margin: EdgeInsets.only(left: 22),
                         child: RotatedBox(
                           quarterTurns: 2,
                           child: IconButton(
@@ -206,7 +254,7 @@ class HomePage extends StatelessWidget {
                     Container(
                       child: Text(
                         "Or With",
-                        style: TextStyle(color: Colors.white, fontSize: 13),
+                        style: TextStyle(color: Color.fromARGB(255, 153, 158, 161), fontSize: 13),
                       ),
                     ),
                     SizedBox(
@@ -219,7 +267,9 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                  ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -253,26 +303,27 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 150,),
+                SizedBox(
+                  height: 110,
+                  ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(top: 0, right: 5),
-                      child: Text(
-                        "Dont't have an account ?",
-                        style: TextStyle(fontSize: 13, color: Colors.white),
-                      ),
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'Already have an account ?  ',
+                    style: TextStyle(fontSize: 13, color: Colors.white),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'Login',
+                      style: TextStyle(fontSize: 13, color: Color.fromARGB(255, 255, 206, 49)),
                     ),
-                    Container(
-                      padding: EdgeInsets.only(top: 0),
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(fontSize: 13, color: Colors.yellow),
-                      ),
-                    )
-                  ],
-                )
+                  )
+                ],
+              )
               ],
             ),
           )),
@@ -283,8 +334,6 @@ class HomePage extends StatelessWidget {
     _isObsecure = !_isObsecure;
     setState(() {});
   }
-
-  void setState(Null Function() param0) {}
 
   void _toggleRememberMe(bool? value) {
     isRememberMe = !isRememberMe;

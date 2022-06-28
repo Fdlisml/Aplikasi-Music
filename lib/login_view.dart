@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/register_view.dart';
 import 'package:music_app/widgets/custom_checkbox.dart';
 
-class HomePage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+
+class _LoginPageState extends State<LoginPage> {
   TextEditingController Email = TextEditingController();
 
-  bool isRememberMe = true;
+  bool isRememberMe = false;
 
-  bool _isObsecure = true;
+  bool _isObsecure = false;
 
   @override
   Widget build(BuildContext context) {
@@ -59,17 +67,18 @@ class HomePage extends StatelessWidget {
                 Container(
                   height: 35,
                   margin: EdgeInsets.only(top: 5),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
                   child: TextField(
                     textAlign: TextAlign.left,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(left: 10),
-                        fillColor: Colors.white,
-                        filled: true,
                         hintText: "Enter Your Email",
                         hintStyle: TextStyle(fontSize: 13),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                        border:
+                            OutlineInputBorder(borderSide: BorderSide.none)),
                     onChanged: (value) {
                       setState;
                     },
@@ -92,26 +101,29 @@ class HomePage extends StatelessWidget {
                 Container(
                   height: 35,
                   margin: EdgeInsets.only(top: 5),
-                  child: TextField(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: TextFormField(
                     textAlign: TextAlign.left,
-                    obscureText: _isObsecure,
+                    obscureText: !_isObsecure,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(left: 10),
-                        suffixIcon: InkWell(
-                          onTap: _togglePassword,
-                          child: Icon(
+                        suffixIcon: IconButton(
+                          color: Colors.black,
+                          splashRadius: 1,
+                          onPressed: _togglePassword,
+                          icon: Icon(
                             _isObsecure
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                             size: 18,
                           ),
                         ),
-                        fillColor: Colors.white,
-                        filled: true,
                         hintText: "Please Enter Your Password",
                         hintStyle: TextStyle(fontSize: 13),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                        border:
+                            OutlineInputBorder(borderSide: BorderSide.none)),
                   ),
                 ),
                 SizedBox(
@@ -123,12 +135,7 @@ class HomePage extends StatelessWidget {
                     Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        CustomCheckbox(
-                            // checkColor: Colors.black,
-                            // activeColor: Colors.white,
-                            // value: isRememberMe,
-                            // onChanged: _toggleRememberMe,
-                          ),
+                        CustomCheckbox(),
                         SizedBox(width: 8),
                         Text(
                           'Remember Me',
@@ -206,7 +213,7 @@ class HomePage extends StatelessWidget {
                     Container(
                       child: Text(
                         "Or With",
-                        style: TextStyle(color: Colors.white, fontSize: 13),
+                        style: TextStyle(color: Color.fromARGB(255, 153, 158, 161), fontSize: 13),
                       ),
                     ),
                     SizedBox(
@@ -219,7 +226,9 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -253,22 +262,26 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 150,),
+                SizedBox(
+                  height: 180,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: EdgeInsets.only(top: 0, right: 5),
-                      child: Text(
-                        "Dont't have an account ?",
-                        style: TextStyle(fontSize: 13, color: Colors.white),
-                      ),
+                    Text(
+                      "Dont't have an account ?  ",
+                      style: TextStyle(fontSize: 13, color: Colors.white),
                     ),
-                    Container(
-                      padding: EdgeInsets.only(top: 0),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegisterPage()));
+                      },
                       child: Text(
                         "Sign Up",
-                        style: TextStyle(fontSize: 13, color: Colors.yellow),
+                        style: TextStyle(fontSize: 13, color: Color.fromARGB(255, 255, 206, 49)),
                       ),
                     )
                   ],
@@ -284,10 +297,9 @@ class HomePage extends StatelessWidget {
     setState(() {});
   }
 
-  void setState(Null Function() param0) {}
-
-  void _toggleRememberMe(bool? value) {
-    isRememberMe = !isRememberMe;
-    setState(() {});
+  void _toggleRememberMe() {
+    setState(() {
+      isRememberMe = !isRememberMe;
+    });
   }
 }
