@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/home_view.dart';
 import 'package:music_app/register_view.dart';
 import 'package:music_app/widgets/custom_checkbox.dart';
 
@@ -7,7 +8,6 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
-
 
 class _LoginPageState extends State<LoginPage> {
   TextEditingController Email = TextEditingController();
@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
+        appBar: AppBar(
             backgroundColor: Color.fromARGB(255, 64, 7, 121),
             title: Text(
               "Hi, Welcome Back! 👋",
@@ -42,15 +42,15 @@ class _LoginPageState extends State<LoginPage> {
               padding: EdgeInsets.only(top: 65, left: 20),
             ),
           ),
-          body: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.only(left: 30, right: 30),
-            color: Color.fromARGB(255, 64, 7, 121),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Row(
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.only(left: 30, right: 30),
+          color: Color.fromARGB(255, 64, 7, 121),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-                Container(
+              Container(
                   height: 35,
                   margin: EdgeInsets.only(top: 5),
                   decoration: BoxDecoration(
@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: Email,
                   ),
                 ),
-                Row(
+              Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-                Container(
+              Container(
                   height: 35,
                   margin: EdgeInsets.only(top: 5),
                   decoration: BoxDecoration(
@@ -126,10 +126,10 @@ class _LoginPageState extends State<LoginPage> {
                             OutlineInputBorder(borderSide: BorderSide.none)),
                   ),
                 ),
-                SizedBox(
+              SizedBox(
                   height: 10,
                 ),
-                Row(
+              Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Wrap(
@@ -153,54 +153,69 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+              SizedBox(
                   height: 50,
                 ),
-                Container(
-                  width: 200,
-                  height: 35,
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 0),
-                  padding: EdgeInsets.all(0),
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 206, 49),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        width: 0,
-                        color: Colors.black,
-                      )),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+              Container(
+                width: 200,
+                height: 35,
+                margin: EdgeInsets.only(top: 0),
+                padding: EdgeInsets.all(0),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 255, 206, 49),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    width: 0,
+                    color: Colors.black,
+                  )
+                ),
+                child: ButtonTheme(
+                  child: ButtonBar(
+                    alignment: MainAxisAlignment.center,
+                    buttonPadding: EdgeInsets.all(0),
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 85),
+                      MaterialButton(
+                        padding: EdgeInsets.only(left: 50),
+                        height: 100,
+                        minWidth: 150,
                         child: Text(
                           "Login",
-                          style: TextStyle(fontSize: 13, color: Colors.white),
-                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 13, color: Colors.white),
+                          textAlign: TextAlign.left,
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) {
+                            return HomePage();
+                          }));
+                        },
+                      ),
+                      RotatedBox(
+                        quarterTurns: 2,
+                        child: IconButton(
+                          padding: EdgeInsets.only(right: 20),
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                          ),
+                          iconSize: 20,
+                          onPressed: () {
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) {
+                              return HomePage();
+                            }));
+                          },
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(left: 30),
-                        child: RotatedBox(
-                          quarterTurns: 2,
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                            ),
-                            iconSize: 20,
-                            onPressed: null,
-                          ),
-                        ),
-                      )
                     ],
-                  ),
-                ),
-                SizedBox(
+                  )
+                )
+              ),
+              SizedBox(
                   height: 10,
                 ),
-                Row(
+              Row(
                   children: [
                     Container(
                       color: Colors.black,
@@ -213,7 +228,9 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       child: Text(
                         "Or With",
-                        style: TextStyle(color: Color.fromARGB(255, 153, 158, 161), fontSize: 13),
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 153, 158, 161),
+                            fontSize: 13),
                       ),
                     ),
                     SizedBox(
@@ -226,10 +243,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+              SizedBox(
                   height: 10,
                 ),
-                Row(
+              Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
@@ -262,10 +279,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+              SizedBox(
                   height: 180,
                 ),
-                Row(
+              Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -281,25 +298,22 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: Text(
                         "Sign Up",
-                        style: TextStyle(fontSize: 13, color: Color.fromARGB(255, 255, 206, 49)),
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Color.fromARGB(255, 255, 206, 49)),
                       ),
                     )
                   ],
                 )
-              ],
-            ),
-          )),
+            ]
+          ),
+        ),
+      ),
     );
   }
 
   void _togglePassword() {
     _isObsecure = !_isObsecure;
     setState(() {});
-  }
-
-  void _toggleRememberMe() {
-    setState(() {
-      isRememberMe = !isRememberMe;
-    });
   }
 }

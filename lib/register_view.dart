@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/widgets/custom_checkbox.dart';
+import 'package:music_app/home_view.dart';
 
 
 class RegisterPage extends StatefulWidget {
@@ -198,46 +199,61 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 50,
                 ),
                 Container(
-                  width: 200,
-                  height: 35,
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 0),
-                  padding: EdgeInsets.all(0),
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 206, 49),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        width: 0,
-                        color: Colors.black,
-                      )),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                width: 200,
+                height: 35,
+                margin: EdgeInsets.only(top: 0),
+                padding: EdgeInsets.all(0),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 255, 206, 49),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    width: 0,
+                    color: Colors.black,
+                  )
+                ),
+                child: ButtonTheme(
+                  child: ButtonBar(
+                    alignment: MainAxisAlignment.center,
+                    buttonPadding: EdgeInsets.all(0),
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 85),
+                      MaterialButton(
+                        padding: EdgeInsets.only(left: 50),
+                        height: 100,
+                        minWidth: 150,
                         child: Text(
                           "Sign Up",
-                          style: TextStyle(fontSize: 13, color: Colors.white),
-                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 13, color: Colors.white),
+                          textAlign: TextAlign.left,
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) {
+                            return HomePage();
+                          }));
+                        },
+                      ),
+                      RotatedBox(
+                        quarterTurns: 2,
+                        child: IconButton(
+                          padding: EdgeInsets.only(right: 20),
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                          ),
+                          iconSize: 20,
+                          onPressed: () {
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) {
+                              return HomePage();
+                            }));
+                          },
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(left: 22),
-                        child: RotatedBox(
-                          quarterTurns: 2,
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                            ),
-                            iconSize: 20,
-                            onPressed: null,
-                          ),
-                        ),
-                      )
                     ],
-                  ),
-                ),
+                  )
+                )
+              ),
                 SizedBox(
                   height: 10,
                 ),
@@ -332,11 +348,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void _togglePassword() {
     _isObsecure = !_isObsecure;
-    setState(() {});
-  }
-
-  void _toggleRememberMe(bool? value) {
-    isRememberMe = !isRememberMe;
     setState(() {});
   }
 }
