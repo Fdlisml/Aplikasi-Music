@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/home_view.dart';
-import 'package:music_app/register_view.dart';
-import 'package:music_app/widgets/custom_checkbox.dart';
+import 'package:music_app/component/custom_checkbox.dart';
+import 'package:music_app/screen/home_view.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+
+class _RegisterPageState extends State<RegisterPage> {
   TextEditingController Email = TextEditingController();
 
   bool isRememberMe = false;
@@ -20,10 +21,10 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
+          appBar: AppBar(
             backgroundColor: Color.fromARGB(255, 64, 7, 121),
             title: Text(
-              "Hi, Welcome Back! 👋",
+              "Create an account",
               style: TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 23,
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
             elevation: 0,
             flexibleSpace: Container(
               child: Text(
-                "Hello again, you’ve been missed!",
+                "Connect with yout friends today!",
                 style: TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 13,
@@ -42,20 +43,54 @@ class _LoginPageState extends State<LoginPage> {
               padding: EdgeInsets.only(top: 65, left: 20),
             ),
           ),
-        body: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.only(left: 30, right: 30),
-          color: Color.fromARGB(255, 64, 7, 121),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Row(
+          body: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            padding: EdgeInsets.only(left: 30, right: 30),
+            color: Color.fromARGB(255, 64, 7, 121),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
                       padding: EdgeInsets.only(top: 20),
-                      // margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
+                      child: Text(
+                        "Username",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 12, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 35,
+                  margin: EdgeInsets.only(top: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: TextField(
+                    textAlign: TextAlign.left,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(left: 10),
+                        hintText: "Enter Your Username",
+                        hintStyle: TextStyle(fontSize: 13),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide.none)),
+                    onChanged: (value) {
+                      setState;
+                    },
+                    controller: Email,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 15),
                       child: Text(
                         "Email",
                         textAlign: TextAlign.left,
@@ -64,12 +99,13 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-              Container(
+                Container(
                   height: 35,
                   margin: EdgeInsets.only(top: 5),
                   decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)
+                  ),
                   child: TextField(
                     textAlign: TextAlign.left,
                     keyboardType: TextInputType.emailAddress,
@@ -77,15 +113,15 @@ class _LoginPageState extends State<LoginPage> {
                         contentPadding: EdgeInsets.only(left: 10),
                         hintText: "Enter Your Email",
                         hintStyle: TextStyle(fontSize: 13),
-                        border:
-                            OutlineInputBorder(borderSide: BorderSide.none)),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide.none)),
                     onChanged: (value) {
                       setState;
                     },
                     controller: Email,
                   ),
                 ),
-              Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
@@ -98,13 +134,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-              Container(
+                Container(
                   height: 35,
                   margin: EdgeInsets.only(top: 5),
                   decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: TextFormField(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: TextField(
                     textAlign: TextAlign.left,
                     obscureText: !_isObsecure,
                     decoration: InputDecoration(
@@ -122,14 +159,14 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         hintText: "Please Enter Your Password",
                         hintStyle: TextStyle(fontSize: 13),
-                        border:
-                            OutlineInputBorder(borderSide: BorderSide.none)),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide.none)),
                   ),
                 ),
-              SizedBox(
+                SizedBox(
                   height: 10,
                 ),
-              Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Wrap(
@@ -153,50 +190,48 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-              SizedBox(
+                SizedBox(
                   height: 50,
                 ),
-              Container(
-                width: 200,
-                height: 35,
-                margin: EdgeInsets.only(top: 0),
-                padding: EdgeInsets.all(0),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 255, 206, 49),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    width: 0,
-                    color: Colors.black,
-                  )
-                ),
-                child: ButtonTheme(
-                  child: ButtonBar(
-                    alignment: MainAxisAlignment.center,
-                    buttonPadding: EdgeInsets.all(0),
-                    children: [
-                      MaterialButton(
-                        padding: EdgeInsets.only(left: 50),
-                        height: 100,
-                        minWidth: 150,
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                              fontSize: 13, color: Colors.white),
-                          textAlign: TextAlign.left,
+                Container(
+                  width: 200,
+                  height: 35,
+                  margin: EdgeInsets.only(top: 0),
+                  padding: EdgeInsets.all(0),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 255, 206, 49),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      width: 0,
+                      color: Colors.black,
+                    )
+                  ),
+                  child: ButtonTheme(
+                    child: ButtonBar(
+                      alignment: MainAxisAlignment.center,
+                      buttonPadding: EdgeInsets.all(0),
+                      children: [
+                        MaterialButton(
+                          padding: EdgeInsets.only(left: 50),
+                          height: 100,
+                          minWidth: 150,
+                          child: Text(
+                            "Sign Up",
+                            style: TextStyle(
+                                fontSize: 13, color: Colors.white),
+                            textAlign: TextAlign.left,
+                          ),
+                          onPressed: () {
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) {
+                              return HomePage();
+                            }));
+                          },
                         ),
-                        onPressed: () {
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) {
-                            return HomePage();
-                          }));
-                        },
-                      ),
-                      RotatedBox(
-                        quarterTurns: 2,
-                        child: IconButton(
-                          padding: EdgeInsets.only(right: 20),
+                        IconButton(
+                          padding: EdgeInsets.only(left: 15),
                           icon: Icon(
-                            Icons.arrow_back,
+                            Icons.arrow_forward,
                             color: Colors.white,
                           ),
                           iconSize: 20,
@@ -207,15 +242,14 @@ class _LoginPageState extends State<LoginPage> {
                             }));
                           },
                         ),
-                      ),
-                    ],
+                      ],
+                    )
                   )
-                )
-              ),
-              SizedBox(
+                ),
+                SizedBox(
                   height: 10,
                 ),
-              Row(
+                Row(
                   children: [
                     Container(
                       color: Colors.black,
@@ -228,9 +262,7 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       child: Text(
                         "Or With",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 153, 158, 161),
-                            fontSize: 13),
+                        style: TextStyle(color: Color.fromARGB(255, 153, 158, 161), fontSize: 13),
                       ),
                     ),
                     SizedBox(
@@ -243,10 +275,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-              SizedBox(
+                SizedBox(
                   height: 10,
-                ),
-              Row(
+                  ),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
@@ -279,36 +311,30 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-              SizedBox(
-                  height: 180,
-                ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Dont't have an account ?  ",
-                      style: TextStyle(fontSize: 13, color: Colors.white),
+                SizedBox(
+                  height: 110,
+                  ),
+                Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'Already have an account ?  ',
+                    style: TextStyle(fontSize: 13, color: Colors.white),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'Login',
+                      style: TextStyle(fontSize: 13, color: Color.fromARGB(255, 255, 206, 49)),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegisterPage()));
-                      },
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                            fontSize: 13,
-                            color: Color.fromARGB(255, 255, 206, 49)),
-                      ),
-                    )
-                  ],
-                )
-            ]
-          ),
-        ),
-      ),
+                  )
+                ],
+              )
+              ],
+            ),
+          )),
     );
   }
 

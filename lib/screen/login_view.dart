@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/widgets/custom_checkbox.dart';
-import 'package:music_app/home_view.dart';
+import 'package:music_app/screen/home_view.dart';
+import 'package:music_app/screen/register_view.dart';
+import 'package:music_app/component/custom_checkbox.dart';
 
-
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-
-class _RegisterPageState extends State<RegisterPage> {
+class _LoginPageState extends State<LoginPage> {
   TextEditingController Email = TextEditingController();
 
   bool isRememberMe = false;
@@ -21,10 +20,10 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
+        appBar: AppBar(
             backgroundColor: Color.fromARGB(255, 64, 7, 121),
             title: Text(
-              "Create an account",
+              "Hi, Welcome Back! 👋",
               style: TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 23,
@@ -33,7 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
             elevation: 0,
             flexibleSpace: Container(
               child: Text(
-                "Connect with yout friends today!",
+                "Hello again, you’ve been missed!",
                 style: TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 13,
@@ -43,54 +42,20 @@ class _RegisterPageState extends State<RegisterPage> {
               padding: EdgeInsets.only(top: 65, left: 20),
             ),
           ),
-          body: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.only(left: 30, right: 30),
-            color: Color.fromARGB(255, 64, 7, 121),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Row(
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.only(left: 30, right: 30),
+          color: Color.fromARGB(255, 64, 7, 121),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
                       padding: EdgeInsets.only(top: 20),
-                      child: Text(
-                        "Username",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 12, color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 35,
-                  margin: EdgeInsets.only(top: 5),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: TextField(
-                    textAlign: TextAlign.left,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 10),
-                        hintText: "Enter Your Username",
-                        hintStyle: TextStyle(fontSize: 13),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide.none)),
-                    onChanged: (value) {
-                      setState;
-                    },
-                    controller: Email,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(top: 15),
+                      // margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
                       child: Text(
                         "Email",
                         textAlign: TextAlign.left,
@@ -99,13 +64,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                Container(
+              Container(
                   height: 35,
                   margin: EdgeInsets.only(top: 5),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)
-                  ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
                   child: TextField(
                     textAlign: TextAlign.left,
                     keyboardType: TextInputType.emailAddress,
@@ -113,15 +77,15 @@ class _RegisterPageState extends State<RegisterPage> {
                         contentPadding: EdgeInsets.only(left: 10),
                         hintText: "Enter Your Email",
                         hintStyle: TextStyle(fontSize: 13),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide.none)),
+                        border:
+                            OutlineInputBorder(borderSide: BorderSide.none)),
                     onChanged: (value) {
                       setState;
                     },
                     controller: Email,
                   ),
                 ),
-                Row(
+              Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
@@ -134,14 +98,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                Container(
+              Container(
                   height: 35,
                   margin: EdgeInsets.only(top: 5),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: TextField(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: TextFormField(
                     textAlign: TextAlign.left,
                     obscureText: !_isObsecure,
                     decoration: InputDecoration(
@@ -159,25 +122,20 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         hintText: "Please Enter Your Password",
                         hintStyle: TextStyle(fontSize: 13),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide.none)),
+                        border:
+                            OutlineInputBorder(borderSide: BorderSide.none)),
                   ),
                 ),
-                SizedBox(
+              SizedBox(
                   height: 10,
                 ),
-                Row(
+              Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        CustomCheckbox(
-                            // checkColor: Colors.black,
-                            // activeColor: Colors.white,
-                            // value: isRememberMe,
-                            // onChanged: _toggleRememberMe,
-                          ),
+                        CustomCheckbox(),
                         SizedBox(width: 8),
                         Text(
                           'Remember Me',
@@ -195,10 +153,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+              SizedBox(
                   height: 50,
                 ),
-                Container(
+              Container(
                 width: 200,
                 height: 35,
                 margin: EdgeInsets.only(top: 0),
@@ -221,7 +179,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         height: 100,
                         minWidth: 150,
                         child: Text(
-                          "Sign Up",
+                          "Login",
                           style: TextStyle(
                               fontSize: 13, color: Colors.white),
                           textAlign: TextAlign.left,
@@ -232,32 +190,29 @@ class _RegisterPageState extends State<RegisterPage> {
                             return HomePage();
                           }));
                         },
-                      ),
-                      RotatedBox(
-                        quarterTurns: 2,
-                        child: IconButton(
-                          padding: EdgeInsets.only(right: 20),
+                      ),                    
+                      IconButton(
+                          padding: EdgeInsets.only(left: 15),
                           icon: Icon(
-                            Icons.arrow_back,
+                            Icons.arrow_forward,
                             color: Colors.white,
                           ),
                           iconSize: 20,
                           onPressed: () {
                             Navigator.pushReplacement(context,
-                                MaterialPageRoute(builder: (context) {
-                              return HomePage();
-                            }));
-                          },
-                        ),
+                              MaterialPageRoute(builder: (context) {
+                            return HomePage();
+                          }));
+                        },
                       ),
                     ],
                   )
                 )
               ),
-                SizedBox(
+              SizedBox(
                   height: 10,
                 ),
-                Row(
+              Row(
                   children: [
                     Container(
                       color: Colors.black,
@@ -270,7 +225,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     Container(
                       child: Text(
                         "Or With",
-                        style: TextStyle(color: Color.fromARGB(255, 153, 158, 161), fontSize: 13),
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 153, 158, 161),
+                            fontSize: 13),
                       ),
                     ),
                     SizedBox(
@@ -283,10 +240,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+              SizedBox(
                   height: 10,
-                  ),
-                Row(
+                ),
+              Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
@@ -319,30 +276,36 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 110,
-                  ),
-                Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    'Already have an account ?  ',
-                    style: TextStyle(fontSize: 13, color: Colors.white),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      'Login',
-                      style: TextStyle(fontSize: 13, color: Color.fromARGB(255, 255, 206, 49)),
+              SizedBox(
+                  height: 180,
+                ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Dont't have an account ?  ",
+                      style: TextStyle(fontSize: 13, color: Colors.white),
                     ),
-                  )
-                ],
-              )
-              ],
-            ),
-          )),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegisterPage()));
+                      },
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Color.fromARGB(255, 255, 206, 49)),
+                      ),
+                    )
+                  ],
+                )
+            ]
+          ),
+        ),
+      ),
     );
   }
 

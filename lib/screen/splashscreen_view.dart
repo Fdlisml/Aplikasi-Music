@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:music_app/login_view.dart';
+import 'package:music_app/screen/login_view.dart';
 
 class SplashScreenPage extends StatefulWidget {
   @override
